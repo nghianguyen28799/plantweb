@@ -1,0 +1,13 @@
+.footer {
+    width: 1350px;
+    max-width: 100%;
+    margin: auto;
+    background-image:url(https://www.plantshop.me/media/signup-bg.jpg);
+    background-position: center;
+    background-size: cover;
+    clear: both;
+}
+
+.col-md-6 img {
+    width: 200px;
+}

@@ -1,0 +1,81 @@
+.manage-right-add-address {
+    width: 75%;
+    float: right;
+    box-shadow: 0 0 4px #e3e3e3;
+
+}
+
+.add-address-title {
+    width: 100%;
+    float: left;
+    height: 40px;
+    text-align: left;
+    margin-bottom: 13px;
+}
+
+.add-address-title h3 {
+    font-size: 20px;
+    font-family: sans-serif;
+    margin: 20px 0 0 20px;
+}
+
+.add-address-content {
+    width: 100%;
+    float: left;
+    height: 350px;
+}
+
+.select-component {
+    width: 100%;
+    float: left;
+    padding-top: 25px;
+}
+
+.city-selector {
+    width: 33%;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.street-selector {
+    width: 33%;
+    float: left;
+    padding: 0 13px;
+}
+
+.my-selected-address {
+    width: 66%;
+    float: left;
+    padding: 0 13px;
+}
+
+.button--add-address {
+    width: 100%;
+    float: left;
+    text-align: right;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .manage-right-add-address {
+        width: 100%;
+        margin-top: 30px;
+    }
+    .add-address-content {
+        height: auto;
+        padding-bottom: 30px;
+    }
+    .city-selector {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .street-selector {
+        width: 100%;
+    }
+
+    .my-selected-address {
+        width: 100%;
+    }
+}

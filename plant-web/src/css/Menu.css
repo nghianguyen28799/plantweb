@@ -1,0 +1,527 @@
+.main-nav {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #f3f3f3;
+    margin: 10px 0 0 0;
+    box-shadow: 0 10px 12px 0 rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 2;
+    float: left;
+}
+
+.main-nav-opacity {
+    display: none;
+    width: 100%;
+    height: 1500px;
+    background: #000;
+    float: left;
+    position: absolute;
+    opacity: .5;
+}
+
+.container-nav {    
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    width: 1350px;
+    margin: auto;
+
+}
+
+.container-nav ul {
+    width: 80%;
+    padding: 0;
+    margin: 0;
+}
+
+.container-nav ul li {
+    list-style-type: none;
+    float: left;
+    padding: 9px 16px;
+}
+
+.container-nav ul li a {
+    color: #000; 
+    text-decoration: none;
+    font-size: 14px;
+    margin: 20px 0 20px 5px;
+    font-weight: 500;
+    font-family: inherit;
+    padding-bottom: 10px;
+}
+
+.container-nav ul li a:hover {
+    border-bottom: 2px solid #9bdc1b;
+}
+
+.us-wrap {
+    width: 230px;
+    padding-left: 50px;
+}
+
+.my-account {
+    float: right;
+    margin: 5px 15px 0 20px;
+    padding-bottom: 18px;
+}
+
+
+.my-cart {
+    float: right;
+    margin: 5px 10px 0 20px;
+}
+
+.my-account img {
+    cursor: pointer;
+    width: 18px;
+}
+
+.us-wrap span {
+    float: right;
+    margin: 9px 12px 0 -8px;
+}
+
+.my-cart img {
+    width: 20px;
+}
+
+.my-cart span {
+    padding: 1px;
+    width: 22px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+    color: white;
+    background: #95d600;
+    font-weight: bolder;
+    z-index: 999;
+    position: absolute;
+    top: -1px;
+}
+
+.account_option {
+    z-index: 99999;
+    width: 280px;
+    position: absolute;
+    right: 14px;
+    top: 46px;
+    display: none;
+    background: #fff;
+    box-shadow: 0 1px 10px #9c9b9bb5;
+    padding: 15px 20px;
+
+}
+
+.account_option_header {
+    text-align: left;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #7a8991;
+}
+
+.account_option_header h4 {
+    font-size: 14px;
+    line-height: 14px;
+    font-family: 'Scene Std';
+    font-weight: bold;
+}
+
+.account_option_header p {
+    font-size: 12px;
+    line-height: 16px;
+    color: #7a8991;
+    
+}
+
+.login_signup {
+    width: 100%;
+    float: left;
+    margin: 5px 0 18px 0
+}
+
+.login_signup a {
+    color: #7a8991;
+    font-size: 13px;
+    font-family: 'Scene Std';
+    font-weight: bold;
+    border: 1px solid #e2e5f1;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    margin: 15px 10px 0 0;
+    text-decoration: none;
+}
+
+.login_signup a:hover {
+    color: #95d600;
+    border: 1px solid #95d600;
+}
+
+.logout {
+    width: 100%;
+    float: left;
+    margin: 5px 0 18px 0;
+}
+
+.logout a {
+    color: #7a8991;
+    font-size: 13px;
+    font-family: 'Scene Std';
+    font-weight: bold;
+    border: 1px solid #e2e5f1;
+    text-transform: uppercase;
+    padding: 8px 90px;
+    margin: 15px 10px 0 0;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    color: #95d600;
+    border: 1px solid #95d600;
+    cursor: pointer;
+}
+
+.content {
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.content a {
+    float: left;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    padding-bottom: 5px;
+    margin: 3px 0;
+}
+
+.content a span {
+    width: 100%;
+    position: absolute;
+    text-align: left;
+    float: left;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Scene Std';
+    color: #7a8991;
+    z-index: 2;
+}
+.content a img {
+    float: left;
+    width: 14px;
+    margin: 4px 20px 0 0;
+}
+
+.content a span:hover {
+    color: #000;
+    font-size: 15px;
+}
+
+.introduce-user {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .main-nav {
+        margin: 0;
+        display: block;
+        /* background: green;         */
+        background: #fff;
+        position: absolute;
+        width: 72%;
+        height: 1000px;
+        z-index: 999999;
+        left: -550px;
+        transition: all 1s ease;
+    }
+    
+    #check:checked ~ .main-nav {
+        left: 0;
+    }
+    
+    #check:checked ~ .main-nav-opacity {
+        display: block;
+    }
+    
+    .container-nav {    
+        display: flex;
+        position: relative;
+        max-width: 100%;
+        width: 1350px;
+        margin: auto;
+    
+    }
+    
+    .container-nav ul {
+        width: 80%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .container-nav ul li {
+        list-style-type: none;
+        float: left;
+        padding: 9px 16px;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .container-nav ul li a {
+        color: #000; 
+        text-decoration: none;
+        font-size: 14px;
+        margin: 20px 0 20px 5px;
+        font-weight: 500;
+        font-family: inherit;
+        padding-bottom: 10px;
+    }
+    
+    .container-nav ul li a:hover {
+        border-bottom: 2px solid #9bdc1b;
+    }
+    
+    .us-wrap {
+        display: none;
+    }
+    
+    .my-account {
+        float: right;
+        margin: 5px 15px 0 20px;
+        padding-bottom: 18px;
+    }
+    
+    
+    .my-cart {
+        float: right;
+        margin: 5px 10px 0 20px;
+    }
+    
+    .my-account svg {
+        cursor: pointer;
+        width: 18px;
+    }
+    
+    .us-wrap span {
+        float: right;
+        margin: 9px 12px 0 -8px;
+    }
+    
+    .my-cart svg {
+        width: 20px;
+    }
+    
+    .my-cart span {
+        padding: 1px;
+        width: 22px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 10px;
+        color: white;
+        background: #95d600;
+        font-weight: bolder;
+        z-index: 999;
+        position: absolute;
+        top: -1px;
+    }
+    
+    .account_option {
+        z-index: 99999;
+        width: 280px;
+        position: absolute;
+        right: 14px;
+        top: 46px;
+        display: none;
+        background: #fff;
+        box-shadow: 0 1px 10px #9c9b9bb5;
+        padding: 15px 20px;
+    
+    }
+    
+    .account_option_header {
+        text-align: left;
+        float: left;
+        width: 100%;
+        border-bottom: 1px solid #7a8991;
+    }
+    
+    .account_option_header h4 {
+        font-size: 14px;
+        line-height: 14px;
+        font-family: 'Scene Std';
+        font-weight: bold;
+    }
+    
+    .account_option_header p {
+        font-size: 12px;
+        line-height: 16px;
+        color: #7a8991;
+        
+    }
+    
+    .login_signup {
+        width: 100%;
+        float: left;
+        margin: 5px 0 18px 0
+    }
+    
+    .login_signup a {
+        color: #7a8991;
+        font-size: 13px;
+        font-family: 'Scene Std';
+        font-weight: bold;
+        border: 1px solid #e2e5f1;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        margin: 15px 10px 0 0;
+        text-decoration: none;
+    }
+    
+    .login_signup a:hover {
+        color: #95d600;
+        border: 1px solid #95d600;
+    }
+    
+    .logout {
+        width: 100%;
+        float: left;
+        margin: 5px 0 18px 0;
+    }
+    
+    .logout a {
+        color: #7a8991;
+        font-size: 13px;
+        font-family: 'Scene Std';
+        font-weight: bold;
+        border: 1px solid #e2e5f1;
+        text-transform: uppercase;
+        padding: 8px 90px;
+        margin: 15px 10px 0 0;
+        text-decoration: none;
+    }
+    
+    .logout a:hover {
+        color: #95d600;
+        border: 1px solid #95d600;
+        cursor: pointer;
+    }
+    
+    .content {
+        float: left;
+        width: 100%;
+        padding-top: 20px;
+    }
+    
+    .content a {
+        float: left;
+        text-align: left;
+        position: relative;
+        width: 100%;
+        padding-bottom: 5px;
+        margin: 3px 0;
+    }
+    
+    .content a span {
+        width: 100%;
+        position: absolute;
+        text-align: left;
+        float: left;
+        margin: 0;
+        font-size: 14px;
+        font-family: 'Scene Std';
+        color: #7a8991;
+        z-index: 2;
+    }
+    .content a img {
+        float: left;
+        width: 14px;
+        margin: 4px 20px 0 0;
+    }
+    
+    .content a span:hover {
+        color: #000;
+        font-size: 15px;
+    }
+
+    .introduce-user {
+        display: block;
+        width: 100%;
+        height: 100px;
+        background-image: url('../images/menu_artwork.jpg');
+    }
+
+    .introduce-user-name {
+        float: left;
+        width: 78%;
+        height: 30%;
+        margin-top: 20px;
+        padding-left: 20px;
+    }
+
+    .introduce-user-name h4 {
+        float: left;
+        color: #000;
+        font-size: 15px;
+    }
+    .introduce-user-name h5 {
+        float: left;
+        color: #fff;
+        font-size: 12px;
+        text-align: left;
+        margin-top: -5px;
+    }
+
+    .introduce-user-name span {
+        font-size: 15px;
+        float: left;
+        margin-left: 5px;
+        font-family: monospace;
+        /* font-weight: bold; */
+        color: #fff;
+        margin-top: -1px;
+    }
+
+    .introduce-user-function {
+        width: 22%;
+        float: left;
+        height: 30%;
+        margin-top: 13px;
+    }
+
+    .logout-mobile {
+        width: 25%;
+        height: 100%;
+        float: left;
+    }
+
+    .logout-mobile img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .close-menu {
+        width: 25%;
+        height: 100%;
+        float: left;
+        margin-left: 20px;
+    }
+
+    .manage-user-mobile {
+        display: block;
+        float: left;
+        width: 100%;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    .manage-user-mobile a {
+        float: left;
+        margin: 0 10px;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: inherit;
+        margin-top: 5px;
+    }
+}

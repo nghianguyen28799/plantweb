@@ -1,0 +1,259 @@
+.orders-page {
+    width: 75%;
+    float: right;
+}
+
+.orders-title {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.orders-title h3 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+.orders-content {
+    border: 1px solid #ccc;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.products-in-order {
+    width: 100%;
+    height: 120px;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-left: none;
+    border-right: none;
+}
+
+.products-in-order-img {
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+.products-in-order-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.products-in-order-info {
+    width: 60%;
+    float: left;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.products-in-order-info h5 {
+    text-align: left;
+}
+
+.products-in-order-info p {
+    text-align: left;
+    color: #8d8c8c;
+}
+
+.products-in-order-info span {
+    text-align: left;
+    color: #8d8c8c;
+    float:left;
+    line-height: 0;
+    font-size: 14px;
+}
+
+.products-in-order-price {
+    width: 20%;
+    float: right;
+    height: 100%;
+    text-align: right;
+    padding-top: 34px;
+}
+
+.orders-summary {
+    width: 100%;
+    float: left;
+    height: 200px;
+    padding: 20px 20px;
+    
+}
+
+.client-info {
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+
+.client-info p{
+    float: left;
+    width: 100%;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+
+.payment-info {
+    width: 40%;
+    height: 100%;
+    float: right;
+}
+
+.orders-detail {
+    width: 60%;
+    float: right;
+}
+
+.orders-detail h5 {
+    width: 65%;
+    float: left;
+    text-align: left;
+    font-size: 16px;
+}
+
+.orders-detail span {
+    width: 33%;
+    float: right;
+    font-weight: bold;
+}
+
+.payment-h5 {
+    font-size: 18px;
+    color: red;
+}
+
+.payment-span {
+    color: red;
+}
+
+.headding-orders {
+    width: 38%;
+    float: left;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 6px;
+}
+
+.headding-orders p {
+    text-align: left;
+    font-size: 15px;
+    font-family: auto;
+}
+
+.delivery-time {
+    width: 25%;
+    float: left;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 6px;
+    margin-left: 20px;
+}
+
+.delivery-time p {
+    text-align: left;
+    font-size: 15px;
+    font-family: auto;
+}
+
+.orders-status {
+    width: 30%;
+    float: left;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 6px;
+    margin-left: 20px;
+}
+
+.orders-status p {
+    font-size: 15px;
+    font-family: auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .orders-page {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .headding-orders {
+        width: 60%;
+        padding-left: 0;
+    }
+
+    .headding-orders h5 {
+        font-size: 16px;
+    }
+
+    .headding-orders p {
+        font-size: 11px;   
+    }
+
+    .orders-status {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .orders-status p {
+        font-size: 12px;
+    }
+
+    .delivery-time {
+        width: 40%;
+        padding-left: 0;
+    }
+
+    .delivery-time p {
+        font-size: 11px;
+    }
+
+    .products-in-order-img {
+        width: 25%;
+    }
+    .products-in-order-info {
+        width: 45%;
+    }
+
+    .products-in-order-info h5 {
+        font-size: 14px;
+    }
+
+    .products-in-order-info span {
+        font-size: 13px;
+    }
+
+    .products-in-order-price h5 {
+        font-size: 17px;
+    }
+    .client-info {
+        width: 60%;
+    }
+    
+    .client-info {
+        width: 55%;
+        font-size: 13px;
+    }
+    .payment-info {
+        width: 45%;
+    }
+
+    .orders-detail {
+        width: 100%;
+        float: left;
+    }
+
+    .orders-detail h5 {
+        width: 56%;
+        font-size: 14px;
+    }
+
+    .orders-detail span {
+        width: 44%;
+        font-size: 12px;
+    }
+
+}

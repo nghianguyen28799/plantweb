@@ -1,0 +1,75 @@
+.manageDesign {
+    width: 100%;
+    float: left;
+    margin-bottom: 300px;
+}
+
+.container-manage {
+    width: 100%;
+    float: left;
+    margin-top: 35px;
+}
+
+.manage-left {
+    width: 20%;
+    float: left;
+}
+
+
+.manage-hello {
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #e3e3e3;
+    height: 30px;
+}
+
+.manage-hello h3 {
+    float: left;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #706d6d;
+    font-weight: bold;
+}
+
+.manage-function {
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+
+.manage-function img {
+    width: 15px;
+}
+
+.manage-function span {
+    color: #000;
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: revert;
+    padding-bottom: 5px;
+}
+
+.manage-function a:hover {
+    text-decoration: none;
+}
+
+.manage-function span:hover {
+    border-bottom: 1px solid;
+}
+
+@media only screen and (max-width: 767px) {
+    .manage-left {
+        width: 100%;
+    }
+
+    .manage-function a {
+        width: 25%;
+
+    }
+    .manage-function a span {
+        margin-left: 7px;
+        font-size: 13px
+    }
+
+}

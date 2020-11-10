@@ -1,0 +1,26 @@
+extends ../layout/common.pug
+   
+block content
+    h1
+        span.mr-3 Cart
+        span= '('
+        span= totalCart
+        span= ')'
+    //- .d-flex.align-items-center    
+    //-     form.ml-auto(action="/users/search", method="GET" class="d-flex")
+    //-         input(type="text", name="q" class="form-control" value=keyword)
+    //-         button(class="btn btn-primary ml-2") Search
+
+    table.table
+        tr
+            th Image
+            th Name
+            th Quantity
+        each item in itemList
+            tr
+                td
+                    img(src=item.image, width="64")
+                td= item.name
+                td= item.number
+        //-         td           
+        //-             a.btn.btn-primary(href='/users/' + user.id) View

@@ -1,0 +1,81 @@
+.manage-right {
+    width: 75%;
+    float: right;
+    box-shadow: 0 0 4px #e3e3e3;
+    padding: 30px 10px 30px 30px;
+}
+
+.profile-container {
+    width: 100%;
+    float: left;
+}
+
+.profile-title {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.profile-title h3 {
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.profile-title h5 {
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #7a8991;
+}
+
+.profile-content {
+    width: 100%;
+    float: left;
+}
+
+.each-content {
+    width: 31%;
+    float: left;
+    margin-right: 20px;
+}
+
+.profile-button {
+    width: 100%;
+    float: left;
+}
+
+.button-update-profile {
+    float: right;
+    margin-right: 20px;
+    color: #fff;
+    background: #95d600;
+    border: none;
+    padding: 9px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.button-update-profile:hover {
+    transition: all 0.5s;
+    background: #38d3e7;
+}
+
+.button-update-profile:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .manage-right {
+        width: 100%;
+        margin-top: 30px;
+        padding: 15px;
+    }
+    
+    .each-content {
+        width: 100%;
+    }
+}

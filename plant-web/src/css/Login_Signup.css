@@ -1,0 +1,160 @@
+.form_signup_signin {
+    width: 100%;
+    clear: left;
+    padding: 50px 0;
+}
+.form_wrap {
+    float: left;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.form_container {
+    width: 320px;
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+}
+
+.form_container h1 {
+    font-size: 23px;
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.form_container h3 {
+    width: 100%;
+    font-size: 17px;
+    color: #7a8991;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 35px 0 15px 0;
+}
+
+.form_container a {
+    width: 100%;
+    border: 1px solid #e2e5f1;
+    color: #2a2a2a;
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.form_container a:hover {
+    border: 1px solid #95d600;
+}
+.type_propertise {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.MuiFormControl-root {
+    width: 100%;
+}
+
+.text-field {
+    width: 100%;
+    float: left;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.submit_field {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.btn_signup {
+    width: 100%;
+    float: left;
+    background: #95d600;
+    height: 45px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.btn_signup:hover {
+    background:#52d600;
+    transition: all 0.5s;
+}
+
+.btn_signup:focus {
+    outline: 0 none;
+}
+
+/* ------ FB - GG ----------- */
+
+.associable_network {
+    width: 100%;
+    float: left;
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+.facebook_login {
+    width: 48%;
+    float: left;
+    height: 100%;
+    background: #4267b2;
+    cursor: pointer;
+}
+
+.facebook_login:hover {
+    background: #5267de;
+    transition: all 0.5s;
+}
+
+.google_login {
+    width: 48%;
+    float: right;
+    height: 100%;
+    background: #2144f3;
+    cursor: pointer;
+}
+
+.google_login:hover {
+    background:#f44336;
+    transition: all 0.5s;
+}
+
+.logo_associable_network {
+    width: 35%;
+    height: 100%;
+    float: left;
+    line-height: 38px;
+}
+
+.logo_associable_network img {
+    width: 40%;
+}
+
+.word_associable_network {
+    width: 65%;
+    height: 100%;
+    float: left;
+    text-align: left;
+    line-height: 45px;
+    padding-left: 10px;
+}
+
+.word_associable_network p {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 14px;
+}

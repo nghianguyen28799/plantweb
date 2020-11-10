@@ -1,0 +1,60 @@
+.each-product {
+    width: 100%;
+    border: 1px solid;
+}
+
+.product-function {
+    width: 7%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-image {
+    width: 13%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-name {
+    width: 15%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-price {
+    width: 15%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-size {
+    width: 15%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-type {
+    width: 15%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-description {
+    width: 15%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}
+
+.product-quantity {
+    width: 5%;
+    border: 1px solid;
+    height: 100%;
+    float: left;
+}

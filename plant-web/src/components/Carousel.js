@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/Carousel.css';
+
 import {
   Carousel,
   CarouselItem,
@@ -8,34 +8,33 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+import '../css/Carousel.css';
+import Image1 from '../images/Image_Carousel1.jpg'
+import Image2 from '../images/Image_Carousel2.jpg'
+import Image3 from '../images/Image_Carousel3.jpg'
+import Image4 from '../images/Image_Carousel4.jpg'
 const items = [
 
   {
-    src: 'https://www.plantshop.me/media/artboard_4_copy_24.jpg',
+    src: Image1,
     altText: '',
     caption: ''
   },
   {
-    src: 'https://www.plantshop.me/media/artboard_4_copy_12.jpg',
+    src: Image2,
     altText: '',
     caption: ''
   },
   {
-    src: 'https://www.plantshop.me/media/artboard_4_copy_21.jpg',
+    src: Image3,
     altText: '',
     caption: ''
   },
   {
-    src: 'https://www.plantshop.me/media/artboard_4_copy_16.jpg',
+    src: Image4,
     altText: '',
     caption: ''
   },
-  {
-    src: 'https://www.plantshop.me/media/artboard_4_copy_10.jpg',
-    altText: '',
-    caption: ''
-  }
-
 ];
 
 const CarouselForm = (props) => {

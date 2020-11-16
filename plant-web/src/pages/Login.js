@@ -10,7 +10,7 @@ import Cookies from 'js-cookie';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
 import Swal from 'sweetalert2'
-
+import { LOCALHOST } from '../host.js'
 
 
 class Login extends Component {
@@ -249,7 +249,7 @@ class Login extends Component {
             password: md5('plantshop'+md5(this.state.password))
         }
 
-        axios.post('http://localhost:9000/users/login',user)
+        axios.post(LOCALHOST+'/users/login',user)
         .then(res=>{
             
             if(res.data.error_email) {

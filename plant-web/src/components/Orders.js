@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Cookies from 'js-cookie';
 import Axios from 'axios';
+import { LOCALHOST } from '../host.js'
 
 import '../css/Orders.css'
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     const [valid, setValid] = useState(true)
     useEffect(() => {
         const idUser = Cookies.get('id');
-        const api = 'http://localhost:9000/order/showOrder/id='+idUser;
+        const api = LOCALHOST+'/order/showOrder/id='+idUser;
         Axios.get(api).then(res => {
             if(valid) {
                 setOrders(res.data.reverse())

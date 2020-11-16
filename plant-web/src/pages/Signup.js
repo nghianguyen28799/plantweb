@@ -5,6 +5,7 @@ import {TextField} from '@material-ui/core';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2'
+import { LOCALHOST } from '../host.js'
 class Signup extends Component {
     constructor(props) {
         super(props);
@@ -68,7 +69,7 @@ class Signup extends Component {
         }
 
         
-        axios.post('http://localhost:9000/users/email_exist',{email: email})
+        axios.post(LOCALHOST+'/users/email_exist',{email: email})
         .then(res=>{
             if(res.data.exist == true) {
                 this.setState({email_exist: true})
@@ -94,7 +95,7 @@ class Signup extends Component {
         if(firstName_err == true || lastName_err == true || phone_err == true || email_err == true || password_err == true || email_exist == true) {
             alert("Error! ");
         } else {
-            axios.post('http://localhost:9000/users/register',user)
+            axios.post(LOCALHOST+'/users/register',user)
             .then(res=>{
                 if(res.data.valid == true) {
                     Swal.fire({

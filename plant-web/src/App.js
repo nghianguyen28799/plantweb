@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dotenv from 'dotenv'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie';
 import Axios from 'axios';

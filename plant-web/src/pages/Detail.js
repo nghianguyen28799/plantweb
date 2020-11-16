@@ -14,7 +14,7 @@ import wishlist from '../images/wishlist.svg'
 import Carousel from "react-elastic-carousel";
 import Item from "../components/Item";
 import equal from 'fast-deep-equal';
-
+import { LOCALHOST } from '../host.js'
 class Detail extends Component {
     constructor(props) {
         super(props);
@@ -66,7 +66,7 @@ class Detail extends Component {
 
     getProduct() {
         const id = this.props.match.params.id;
-        let apiId = "http://localhost:9000/product/id=" + id;
+        let apiId = LOCALHOST+"/product/id=" + id;
         axios.get(apiId).then(res => {
             this.setState({ 
                 product: res.data,
@@ -80,7 +80,7 @@ class Detail extends Component {
                 productId : this.props.match.params.id,
                 size : size,
             }
-            axios.post('http://localhost:9000/wishlist/finddata', data)
+            axios.post(LOCALHOST+'/wishlist/finddata', data)
             .then(res => {
                 if(res.data.added) {
                     this.setState({
@@ -97,11 +97,11 @@ class Detail extends Component {
 
     getSimilarProducts() {
         const id = this.props.match.params.id;
-        let apiId = "http://localhost:9000/product/id=" + id;
+        let apiId = LOCALHOST+"/product/id=" + id;
         let type = '';
         axios.get(apiId).then(res => {
             type = res.data[0].type;
-            axios.get('http://localhost:9000/product/type='+type)
+            axios.get(LOCALHOST+'/product/type='+type)
             .then(response => {
                 var currentIndex = -1;
                 for(let j in response.data) {
@@ -131,7 +131,7 @@ class Detail extends Component {
                         }
                     }
                 }
-                axios.post('http://localhost:9000/product/similarproducts', {arr: arr, id: id, type: type})
+                axios.post(LOCALHOST+'/product/similarproducts', {arr: arr, id: id, type: type})
                 .then(resData => {
                     this.setState({
                         similarProducts: resData.data
@@ -159,7 +159,7 @@ class Detail extends Component {
             productId : this.props.match.params.id,
             size : size,
         }
-        axios.post('http://localhost:9000/wishlist/finddata', data)
+        axios.post(LOCALHOST+'/wishlist/finddata', data)
         .then(res => {
             if(res.data.added) {
                 this.setState({
@@ -204,7 +204,7 @@ class Detail extends Component {
 
     getCart() {
         const id = Cookies.get('id');
-        let api = 'http://localhost:9000/cart/showCart/id='+id;
+        let api = LOCALHOST+'/cart/showCart/id='+id;
         axios.get(api).then(res => {
             let products = res.data;
             let num = 0;
@@ -222,7 +222,7 @@ class Detail extends Component {
             productId : this.props.match.params.id,
             size : this.state.size,
         }
-        axios.post('http://localhost:9000/wishlist/create', data)
+        axios.post(LOCALHOST+'/wishlist/create', data)
         .then(() => {
             this.setState({
                 added_wishlist: true

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import Axios from 'axios';
 import equal from 'fast-deep-equal';
+import { LOCALHOST } from '../host.js'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -110,7 +111,7 @@ class Header extends Component {
 
     getProductNumber() {
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/cart/showCart/id='+id;
+        const api = LOCALHOST+'/cart/showCart/id='+id;
         Axios.get(api).then(res => {
             let result = res.data;
             let num = 0;
@@ -125,7 +126,7 @@ class Header extends Component {
     
     getUser() {
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/users/id='+id;
+        const api = LOCALHOST+'/users/id='+id;
         Axios.get(api)
         .then(res => {
             this.setState({

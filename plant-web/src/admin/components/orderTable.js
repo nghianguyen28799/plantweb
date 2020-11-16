@@ -71,7 +71,11 @@ function Editable() {
       { title: 'Shipping Fee', field: 'shippingfee'},
       { title: 'Payment', field: 'payment' },
       { title: 'Time Order', field: 'timeorder' },
-      { title: 'Order Status', field: 'orderstatus' },
+      {
+        title: 'Order Status',
+        field: 'orderstatus',
+        lookup: { 0: 'Waiting', 1: 'Đã xác nhận', 2: 'Đang vận chuyển', 3: 'Đã giao' },
+      },
     ]);
   
     const [data, setData] = useState([
@@ -127,7 +131,9 @@ function Editable() {
                 const index = oldData.tableData.id;
                 dataUpdate[index] = newData;
                 setData([...dataUpdate]);
-  
+                console.log('new: ' + newData.orderstatus);
+                  Axios.post(`http://localhost:9000/order/update`, {id: newData.id, orderStatus: newData.orderstatus})
+                  .then(() => { })
                 resolve();
               }, 1000)
             }),

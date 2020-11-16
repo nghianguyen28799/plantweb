@@ -15,7 +15,7 @@ import Wishlist from "../components/Wishlist.js"
 import Orders from "../components/Orders.js"
 import Update_Address from "../components/Update_Address.js";
 import equal from 'fast-deep-equal';
-
+import { LOCALHOST } from '../host.js'
 class Manage extends Component {
     constructor() {
         super();
@@ -37,7 +37,7 @@ class Manage extends Component {
 
     getUser() {
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/users/id='+id;
+        const api = LOCALHOST+'/users/id='+id;
         Axios.get(api)
         .then(res => {
             this.setState({

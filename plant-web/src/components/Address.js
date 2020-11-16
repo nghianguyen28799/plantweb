@@ -4,7 +4,7 @@ import Plus from '../images/plus.png';
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import Axios from 'axios';
-
+import { LOCALHOST } from '../host.js'
 import Delete_icon from '../images/delete.svg';
 import Pencil_icon from '../images/pencil.png';
 class Address extends Component {
@@ -21,7 +21,7 @@ class Address extends Component {
 
     getData() {
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/users/id='+id;
+        const api = LOCALHOST+'/users/id='+id;
         Axios.get(api)
         .then(res => {
             this.setState({
@@ -33,7 +33,7 @@ class Address extends Component {
     getDelete(address) {
         console.log(address);
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/users/deleteaddress';
+        const api = LOCALHOST+'/users/deleteaddress';
         Axios.post(api, {id: id, address: address})
         .then(res => {
             window.location.reload()

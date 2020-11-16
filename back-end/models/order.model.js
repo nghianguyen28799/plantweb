@@ -15,7 +15,7 @@ var orderSchema = new Schema({
     shippingFee: Number,
     productPriceTotal: Number,
     shippingTime: String,
-    currentTime: String,
+    currentTime: Date,
     orderStatus: Number
 });
 

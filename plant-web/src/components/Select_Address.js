@@ -12,6 +12,7 @@ import Chip from '@material-ui/core/Chip';
 import { Button, TextField, InputAdornment} from '@material-ui/core';
 import Axios from 'axios';
 import Cookies, { set } from 'js-cookie';
+import { LOCALHOST } from '../host.js'
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -131,7 +132,7 @@ export default function MultipleSelect() {
 
   const btnAddAdress = (props) => {
     const address = street + ', ' + ward + ', ' + district + ', ' + city;
-    Axios.post('http://localhost:9000/users/add-address', {id: Cookies.get('id'), address: address})
+    Axios.post(LOCALHOST+'/users/add-address', {id: Cookies.get('id'), address: address})
     .then(() => {
       window.location.href = '/user/manage=address  ';
     })

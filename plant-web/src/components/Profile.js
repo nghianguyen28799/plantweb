@@ -3,6 +3,7 @@ import '../css/Profile.css';
 import Cookies from 'js-cookie';
 import { Button, TextField, InputAdornment} from '@material-ui/core';
 import Axios from 'axios';
+import { LOCALHOST } from '../host.js'
 import md5 from 'md5';
 class Profile extends Component {
     constructor(props) {
@@ -82,7 +83,7 @@ class Profile extends Component {
                 phone: this.state.phone
             }
             if(this.state.changed) {
-                Axios.post('/users/update/userinfor', infor)
+                Axios.post(LOCALHOST+'/users/update/userinfor', infor)
                 .then(() => {
                     window.location.reload(false);
                 })
@@ -113,7 +114,7 @@ class Profile extends Component {
                 newPassword: this.state.newPassword
             }
             if(passwordValid) {
-                Axios.post('/users/update/password', inforUser)
+                Axios.post(LOCALHOST+'/users/update/password', inforUser)
                 .then(() => {
                     window.location.reload(false);
                 })
@@ -141,7 +142,7 @@ class Profile extends Component {
 
     getInformationUser() {
         const idUser = this.state.id;
-        const api = '/users/id='+idUser;
+        const api = LOCALHOST+'/users/id='+idUser;
         Axios.get(api)
         .then(res => {
             this.setState({ 

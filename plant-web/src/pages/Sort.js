@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../css/Product.css';
 import equal from 'fast-deep-equal';
-
+import { LOCALHOST } from '../host.js'
 class Sort extends Component {
     constructor(props) {
         super(props);
@@ -29,18 +29,18 @@ class Sort extends Component {
         let page = this.props.match.params.page;
         let keyword = this.props.match.params.keyword;
         const sort = this.props.match.params.sort
-        let api = "http://localhost:9000/";
-        let apiProducts = "http://localhost:9000/";
+        let api = LOCALHOST+"/";
+        let apiProducts = LOCALHOST+"/";
         if(!page) {
             page = 1;
         }
 
         if(this.state.type){
-            api = "http://localhost:9000/product/type=" + type + "/sort=" + sort + "/page=" + page;
-            apiProducts = "http://localhost:9000/product/type=" + type;
+            api = LOCALHOST+"/product/type=" + type + "/sort=" + sort + "/page=" + page;
+            apiProducts = LOCALHOST+"/product/type=" + type;
         } else if(this.state.keyword) {
-            api = "http://localhost:9000/product/search=" + keyword + "/sort=" + sort + "/page=" + page;
-            apiProducts = "http://localhost:9000/product/search=" + keyword;
+            api = LOCALHOST+"/product/search=" + keyword + "/sort=" + sort + "/page=" + page;
+            apiProducts = LOCALHOST+"/product/search=" + keyword;
         }
         console.log(api);
         axios.get(api).then(res => {

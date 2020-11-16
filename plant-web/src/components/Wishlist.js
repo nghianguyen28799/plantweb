@@ -5,6 +5,7 @@ import Axios from 'axios';
 import cart_icon from '../images/cart_gray.svg';
 import remove_icon from '../images/remove_gray.svg';
 import Swal from 'sweetalert2'
+import { LOCALHOST } from '../host.js'
 class Wishlist extends Component {
     constructor(props) {
         super(props);
@@ -23,14 +24,14 @@ class Wishlist extends Component {
         this.setState({
             wishlist: []
         })
-        Axios.get('http://localhost:9000/wishlist/show/userid='+userId)
+        Axios.get(LOCALHOST+'/wishlist/show/userid='+userId)
         .then(res => {
             const wishlist = res.data;
             let array = []
             for(let i in wishlist) {
                 const size = wishlist[i].size
                 const productId = wishlist[i].productId;
-                Axios.get('http://localhost:9000/product/id='+productId)
+                Axios.get(LOCALHOST+'/product/id='+productId)
                 .then(resProduct => {
                     var t = 0;
                     for(let j in resProduct.data[0].sizes) {
@@ -54,7 +55,7 @@ class Wishlist extends Component {
     }
 
     deleteWishlist(id) {
-        Axios.post('http://localhost:9000/wishlist/delete', {id: id})
+        Axios.post(LOCALHOST+'/wishlist/delete', {id: id})
         .then(() => {
             document.getElementById('wishlist'+id).style.height = '0';
             document.getElementById('wishlist'+id).style.zIndex = '0';
@@ -93,7 +94,7 @@ class Wishlist extends Component {
 
     getCart() {
         const id = Cookies.get('id');
-        let api = 'http://localhost:9000/cart/showCart/id='+id;
+        let api = LOCALHOST+'/cart/showCart/id='+id;
         Axios.get(api).then(res => {
             let products = res.data;
             let num = 0;

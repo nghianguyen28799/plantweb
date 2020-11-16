@@ -5,7 +5,7 @@ import '../css/Product.css';
 import equal from 'fast-deep-equal';
 import Sorting_wrap from '../components/Sorting_wrap';
 import Cookies from 'js-cookie';
-
+import { LOCALHOST } from '../host.js'
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -27,15 +27,15 @@ class Product extends Component {
     getDB() {
         const type = this.props.match.params.type;
         var page = this.props.match.params.page;
-        let api = "http://localhost:9000/";
-        let apiProducts = "http://localhost:9000/";
+        let api = LOCALHOST;
+        let apiProducts = LOCALHOST;
         if(!page) {
             page = 1;   
         }
 
         if(this.state.type || this.state.page){
-            api = "http://localhost:9000/product/type=" + type + "/page=" + page;
-            apiProducts = "http://localhost:9000/product/type=" + type;
+            api = LOCALHOST+"/product/type=" + type + "/page=" + page;
+            apiProducts = LOCALHOST+"/product/type=" + type;
         }
 
         axios.get(api).then(res => {

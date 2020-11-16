@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../css/Product.css';
 import equal from 'fast-deep-equal';
-
+import { LOCALHOST } from '../host.js'
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -25,15 +25,15 @@ class Search extends Component {
     getDB() {
         const keyword = this.props.match.params.keyword.toLowerCase();
         var page = this.props.match.params.page;
-        let api = "http://localhost:9000/";
+        let api = LOCALHOST+"/";
         if(!page) {
             page = 1;
         }
         if(this.state.keyword){
-            api = "http://localhost:9000/product/search=" + keyword + "/page=" + page;
+            api = LOCALHOST+"/product/search=" + keyword + "/page=" + page;
         }
         if(this.state.page) {
-            api = "http://localhost:9000/product/search=" + keyword + "/page=" + page;
+            api = LOCALHOST+"/product/search=" + keyword + "/page=" + page;
         }
         axios.get(api).then(res => {
             this.setState({ 
@@ -44,10 +44,10 @@ class Search extends Component {
 
     getProduct() {
         const keyword = this.props.match.params.keyword.toLowerCase();
-        let apiProducts = "http://localhost:9000/";
+        let apiProducts = LOCALHOST+"/";
 
         if(this.state.keyword){
-            apiProducts = "http://localhost:9000/product/search=" + keyword;
+            apiProducts = LOCALHOST+"/product/search=" + keyword;
         }
         axios.get(apiProducts).then(res => {
             this.setState({ 

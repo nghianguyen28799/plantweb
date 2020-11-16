@@ -6,7 +6,7 @@ import axios from 'axios';
 import equal from 'fast-deep-equal';
 import Swal from 'sweetalert2'
 import Modals from '../components/Modals.js'
-
+import { LOCALHOST } from '../host.js'
 import Remove from '../images/remove.svg';
 import emptyCart from '../images/empty-cart.svg';
 
@@ -39,7 +39,7 @@ class Cart extends Component {
 
     getUser() {
         const id = Cookies.get('id');
-        const api = 'http://localhost:9000/users/id='+id;
+        const api = LOCALHOST+'/users/id='+id;
         axios.get(api)
         .then(res => {
             this.setState({
@@ -50,7 +50,7 @@ class Cart extends Component {
 
     getCart() {
         const id = Cookies.get('id');
-        let api = 'http://localhost:9000/cart/showCart/id='+id;
+        let api = LOCALHOST+'/cart/showCart/id='+id;
         axios.get(api).then(res => {
             this.setState({
                 products: res.data,
@@ -63,7 +63,7 @@ class Cart extends Component {
             document.getElementById('number_cart').innerHTML = num;
             document.getElementById('number_cart_mobile').innerHTML = num;
             res.data.map(product => {
-                axios.get("http://localhost:9000/product/id=" + product.productId)
+                axios.get(LOCALHOST+"/product/id=" + product.productId)
                 .then(res1Product => {
                     this.setState({
                         getQty: this.state.getQty.concat(res1Product.data[0].number)
@@ -78,9 +78,9 @@ class Cart extends Component {
   
         let remainNum = 0;
         let qty = Number(document.getElementById('qty_text_'+idProduct).value);
-        const api = 'http://localhost:9000/cart/product/update';
+        const api = LOCALHOST+'/cart/product/update';
         
-        axios.get("http://localhost:9000/product/id="+idProduct)
+        axios.get(LOCALHOST+"/product/id="+idProduct)
         .then(response => {
             if(qty+num < 1 ) {
                 this.delete(idProduct, idUser);
@@ -111,7 +111,7 @@ class Cart extends Component {
             idProduct: idProduct,
             idUser: idUser
         }
-        const api = 'http://localhost:9000/cart/product/delete';
+        const api = LOCALHOST+'/cart/product/delete';
        
         Swal.fire({
         title: 'Are you sure?',

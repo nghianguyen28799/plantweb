@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import { LOCALHOST } from '../host.js'
 import { Link } from "react-router-dom";
 class ModalExample extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class ModalExample extends Component {
         shippingTime: infoCart.shippingTime,
       }
       if(this.state.validAddress) {
-        axios.post('http://localhost:9000/order/createOrder', data)
+        axios.post(LOCALHOST+'/order/createOrder', data)
         .then(() => {
           window.location.href = "/user/manage=orders";
         })

@@ -3,7 +3,7 @@ const users = express.Router()
 
 const User = require("../models/user.model");
 const controller = require('../controllers/user.controller');
-users.get('/id=:id', (req, res) => controller.id) 
+users.get('/id=:id', controller.id) 
 
 users.get('/', controller.user)
 

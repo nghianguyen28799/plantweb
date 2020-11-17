@@ -35,8 +35,9 @@ class Wishlist extends Component {
                 .then(resProduct => {
                     var t = 0;
                     for(let j in resProduct.data[0].sizes) {
-                        if(resProduct.data[0].sizes[j] == size);
-                        t = j;
+                        if(resProduct.data[0].sizes[j] == size){
+                            t = j;
+                        }
                     }
                     const productInfor = {
                         id: wishlist[i]._id,
@@ -152,7 +153,7 @@ class Wishlist extends Component {
                 </div>
                 <div className="page-none">
                     
-                    </div>
+                </div>
             </div>
         )
     }

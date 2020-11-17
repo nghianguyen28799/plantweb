@@ -222,6 +222,7 @@ class Detail extends Component {
             productId : this.props.match.params.id,
             size : this.state.size,
         }
+        console.log(data);
         axios.post(LOCALHOST+'/wishlist/create', data)
         .then(() => {
             this.setState({
@@ -255,7 +256,7 @@ class Detail extends Component {
 
     render() {
         const { product }= this.state;
-
+        console.log(this.state.size);
         const breakPoints = [
             { width: 1, itemsToShow: 1 },
             { width: 300, itemsToShow: 2, itemsToScroll: 2 },

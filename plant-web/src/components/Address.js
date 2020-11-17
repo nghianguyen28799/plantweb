@@ -40,9 +40,9 @@ class Address extends Component {
         })
     }
 
-    changePage(index) {
-        this.props.history.push('/user/manage=updateaddress'+index);
-    }
+    // changePage(index) {
+    //     this.props.history.push('/user/manage=updateaddress'+index);
+    // }
 
     render() {
         return (
@@ -52,9 +52,6 @@ class Address extends Component {
                         <div className="div-add-address">
                             <div className="delete-address" onClick={() => this.getDelete(address)}>
                                 <img src={Delete_icon}/>
-                            </div>
-                            <div className="update-address" onClick={() => this.changePage(index)}>
-                                <img src={Pencil_icon}/>
                             </div>
 
                             <div className="show-address">

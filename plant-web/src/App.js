@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie';
-import Axios from 'axios';
+import axios from 'axios';
 import equal from 'fast-deep-equal';
 import './App.css';
 // import './css/Header.css';
@@ -21,15 +21,35 @@ import Narbar from './admin/components/Narbar.js'
 import orderTable from './admin/components/orderTable.js';
 import productTable from './admin/components/productTable.js';
 import userTable from './admin/components/userTable.js';
+import addProduct from './admin/components/addProduct.js';
+import updateProduct from './admin/components/updateProduct.js';
+import Contact from './admin/components/contact.js';
+import Join from './components/Join.js';
+import Chat from './components/Chat.js';
+import ChatAdmin from './admin/components/chatAdmin.js';
+
+import Message_icon from './images/message.svg';
+import { LOCALHOST } from './host.js'
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-        number: ''
+      user: {},
     }
   }
 
+  componentDidMount() {
+    const idUser = Cookies.get('id');
+    axios.get(LOCALHOST+'/users/id='+idUser)
+      .then(res => {
+          this.setState({
+            user: res.data
+          }) 
+      })
+  }
+
   render(){
+  
   return (
     <Router>
       <div className="App">
@@ -42,15 +62,29 @@ class App extends Component {
               <Route path="/product" exact component={ productTable } />
               <Route path="/user" exact component={ userTable } />
               <Route path="/order" exact component={ orderTable } />
-
+              <Route path="/addproduct" exact component={ addProduct } />
+              <Route path="/updateproduct/:id" exact component={ updateProduct } />
+              <Route path="/contact" exact component component={Contact} />
+              <Route path="/contact/userId=:id" exact component component={ChatAdmin} />
             </div> :
             <div>
               {/* {
                 (!Cookies.get('id')) &&
                 <Redirect from='/user/manage' to='/' /> 
               } */}
-    
               <Header  number={this.state.number} />
+              <div className="container">
+                <input type="checkbox" id="message" />
+                <Chat />
+                <label for="message" style={{ width: "100%"}}>
+                  <div className="button-message-view">
+                    <img src={Message_icon}/>
+                  </div>
+                </label>
+                
+              </div>
+    
+              
               <Route path="/" render={()=> <Index />} exact component={ Index } />
               <Route path="/product/type=:type" exact component={ Product } />
               <Route path="/product/id=:id" exact component={ Detail } />
@@ -65,6 +99,9 @@ class App extends Component {
               <Route path="/user/login" exact component={Login} />
               <Route path="/shop/cart" exact component={Cart} />
               <Route path="/user/manage=:function" exact component={Manage} />
+              {/* <Route path="/realtime" exact component={Join}/> */}
+              <Route path="/realtime/name=:name/room=:room" exact component={Chat} />
+            
               <Footer />
             </div>
           }

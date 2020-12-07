@@ -41,7 +41,6 @@ module.exports = {
                             Product.findOne({_id: product.productId})
                             .then(data => {
                                 const conditionUpdate = {_id: product.productId}
-                                console.log(data.number, product.number);
                                 const update = {number: data.number - product.number}
                                 Product.updateOne(conditionUpdate, update).then(update => {
                                 })

@@ -1,6 +1,7 @@
 var Product = require('../models/product.model');
-const limit = 16;
+const limit = 12;
 module.exports = {
+
     index: (req, res) => {
         Product.find()
         .then(data => {
@@ -140,6 +141,58 @@ module.exports = {
             }
             res.json(data);
         })
+    },
+
+    addProduct: (req, res) => {
+        Product.create({
+            name: req.body.name,
+            prices: req.body.prices,
+            sizes: req.body.sizes,
+            images: req.body.images,
+            type: req.body.type,
+            description: req.body.description,
+            number: req.body.quantum
+        })
+        .then(() => {
+            res.json({success: true});
+        })
+    },
+
+    updateProduct: (req, res) => {
+        const condition = {
+            _id: req.body.id
+        };
+
+        const action = {
+            name: req.body.name,
+            prices: req.body.prices,
+            sizes: req.body.sizes,
+            type: req.body.type,
+            number: req.body.quantum,
+            description: req.body.description,
+        }
+
+        Product.updateOne(condition, action)
+        .then(() => {
+            res.json({success: true});
+        })
+
+    },
+
+    updateImages: (req, res) => {
+        const condition = {
+            _id: req.body.id
+        };
+
+        const action = {
+            images: req.body.images,
+        }
+
+        Product.updateOne(condition, action)
+        .then(() => {
+            res.json({success: true});
+        })
+
     }
 }
 

@@ -36,7 +36,7 @@ class Login extends Component {
     }
 
     responseGoogle = (res) => {
-        console.log(res.nt.pV);
+        console.log(res.data);
         this.setState({
             auth: true
         })
@@ -45,7 +45,7 @@ class Login extends Component {
             .then(response => {
                 if(!response.data.exist) { 
                     const infor = {
-                        firstName: res.nt.pV,
+                        // firstName: res.profileObj.name,
                         idGoogle: res.googleId,
                     }
                     console.log(infor)
@@ -80,8 +80,8 @@ class Login extends Component {
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
                                     const userId = resUser.data[0]._id;
-                                    Cookies.set('id', userId, { expires: 1 });
-                                    window.location.href = "/";
+                                    // Cookies.set('id', userId, { expires: 1 });
+                                    // window.location.href = "/";
                                 }
                                 })
                             })
@@ -119,7 +119,6 @@ class Login extends Component {
                         /* Read more about handling dismissals below */
                         if (result.dismiss === Swal.DismissReason.timer) {
                             const userId = resGG.data[0]._id;
-                            console.log(resGG.data);
                             // Cookies.set('id', userId, { expires: 1 });
                             // window.location.href = "/";
                         }
@@ -219,10 +218,8 @@ class Login extends Component {
                                 window.location.href = "/";
                             }
                             })
-
                         })
                     }
-
                 })
             }
     }
@@ -321,7 +318,6 @@ class Login extends Component {
                             <h1>Login to continue</h1>
                             <div className="type_propertise">
                                 <div className="type_propertise">
-                                             
                                         <div className="text-field">
                                             {
                                                 (this.state.email_exist == false) ?
@@ -409,6 +405,7 @@ class Login extends Component {
 
                             <GoogleLogin
                                 clientId="2122750108-2a8ve0cg3p34kq93doatn9nv6nejv07p.apps.googleusercontent.com"
+
                                 render={renderProps => (
                                     <div className="google_login" onClick={renderProps.onClick}>
                                         <div className="logo_associable_network">

@@ -24,7 +24,7 @@ const Example = (props) => {
 
   const onClick = () => {
     Cookies.remove('admin-plantweb');
-    window.location.reload();
+    window.location.href = "/";
   }
 
   return (
@@ -42,6 +42,12 @@ const Example = (props) => {
             </NavItem>
             <NavItem>
               <Link to="/order"><NavLink>Orders</NavLink></Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/addproduct"><NavLink>Add Product</NavLink></Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/contact"><NavLink>Contact</NavLink></Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

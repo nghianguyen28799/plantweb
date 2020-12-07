@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import Modals from '../components/Modals.js'
 import { LOCALHOST } from '../host.js'
 import Remove from '../images/remove.svg';
+import Delete from '../images/delete.svg';
 import emptyCart from '../images/empty-cart.svg';
 
 
@@ -22,11 +23,15 @@ class Cart extends Component {
             user: '',
             infoCart: '',
             getQty: [],
+            applyVoucher: false,
+            errorVoucherText: '',
+            num_price: 0,
         }
         this.getUpdate = this.getUpdate.bind(this);
         this.delete = this.delete.bind(this);
         this.toggle = this.toggle.bind(this);
         this.checkOut = this.checkOut.bind(this);
+        this.applyVoucher = this.applyVoucher.bind(this);
     }
     
     componentDidMount() {
@@ -55,6 +60,15 @@ class Cart extends Component {
             this.setState({
                 products: res.data,
             })
+            var num_price = 0;
+            res.data.map(product => (
+                num_price += (product.price * product.number)
+            ))
+            this.setState({
+                num_price: num_price
+            })
+
+
             let products = res.data;
             let num = 0;
             for(let i in products) {
@@ -200,13 +214,63 @@ class Cart extends Component {
         })
     }
 
-    
+    applyVoucher() {
+        const { voucherText } = this.state;
+        if(voucherText) {
+            axios.post(LOCALHOST+'/voucher/checkvoucher', {id: Cookies.get('id'), name: voucherText})
+            .then(res => {
+                if(res.data.error) {
+                    console.log('1');
+                    this.setState({ errorVoucherText: 'This voucher is used' })
+                    const orderSummary = document.getElementById('order_summary');
+                    orderSummary.style.marginTop = "0";
+                    let back = setInterval(timer, 2000);
+                    let count = 0;
+                    function timer() {
+                        orderSummary.style.marginTop = "-50px";
+                        clearInterval(back);
+                    }
+                }
+                else if(res.data[0]) {
+                    // 
+                    if(this.state.num_price < res.data[0].minOrder) {
+                        this.setState({ errorVoucherText: 'Minimun Order from ' + res.data[0].minOrder })
+                        const orderSummary = document.getElementById('order_summary');
+                        orderSummary.style.marginTop = "0";
+                        let back = setInterval(timer, 2000);
+                        let count = 0;
+                        function timer() {
+                            orderSummary.style.marginTop = "-50px";
+                            clearInterval(back);
+                        }
 
+                    } else {
+                        this.setState({ 
+                            Voucher: res.data[0],
+                            applyVoucher: true
+                        }); 
+                    }
+                                   
+                }
+                else {
+                    console.log('3');
+                    this.setState({ errorVoucherText: 'Invalid Voucher' })
+                    const orderSummary = document.getElementById('order_summary');
+                    orderSummary.style.marginTop = "0";
+                    let back = setInterval(timer, 2000);
+                    let count = 0;
+                    function timer() {
+                        orderSummary.style.marginTop = "-50px";
+                        clearInterval(back);
+                    }
+                }
+            })
+        }    
+    }
+    
     render() {
-        var num_price = 0;
-        this.state.products.map(product => (
-            num_price += (product.price * product.number)
-        ))
+        const { num_price, products, Voucher, applyVoucher } = this.state;
+
         var totalToFree = num_price; 
         var text = "";
         var shippingFee = this.state.shippingFee;
@@ -219,8 +283,20 @@ class Cart extends Component {
         } else {    
             text = "You are USD " +(100-num_price)+" away from free shipping"
         }
-        const products = this.state.products;
 
+        var percent = 0;
+        var reducedPrice = 0;
+        if(applyVoucher) {
+            percent = Voucher.percent;
+            
+            if((num_price * percent / 100) > Voucher.maximum) {
+                reducedPrice = Voucher.maximum;
+            } else {
+                reducedPrice = num_price * percent / 100;
+            }
+        }
+
+        // console.log(applyVoucher);
         if(products.length == 0) {
             return (
                 <div className="cart_page_wrap">
@@ -244,7 +320,7 @@ class Cart extends Component {
                             <div className="cart_left_header">
                                 <h1>My Cart</h1>
                             </div>
-                            <Modals changeToggle={this.toggle} toggle={this.state.modals} user={this.state.user} infoCart={ this.state.infoCart } />
+                            <Modals changeToggle={this.toggle} toggle={this.state.modals} user={this.state.user} infoCart={ this.state.infoCart } Voucher={ Voucher } />
                             <div className="cart_table">
                                 {
                                     products.map((product, index) => (
@@ -276,9 +352,7 @@ class Cart extends Component {
                                         </div>
                                     ))    
                                 }
-                                
                             </div>
-                            
                         </div>
                         <div className="cart_right">
                             <div className="cart_box">
@@ -316,13 +390,28 @@ class Cart extends Component {
 
                             <div class="cart_box">
                                 <div>
-                                    <div className="coupon_box">
-                                        <div className="button_coupon">
-                                            Apply
+                                    {
+                                        (!applyVoucher)
+                                        ?
+                                        <div className="coupon_box">
+                                            <div className="button_coupon" onClick={this.applyVoucher}>
+                                                Apply
+                                            </div>
+                                            <input type="text" name="voucherText" onChange={(e) => {this.setState({ voucherText: e.target.value})}} className="text_coupon" placeholder="Enter coupon or gift card"/>
                                         </div>
-                                        <input type="text" className="text_coupon" placeholder="Enter coupon or gift card"/>
+                                        :
+                                        <div className="valid_coupon_box">
+                                           <p> your entered voucher successfully </p>
+                                           <img src={Delete} onClick={() => {this.setState({ voucher: [], applyVoucher: false, voucherText: '' })}}/>
+                                        </div>
+                                    }
+                                    
+
+                                    <div className="invalid_coupon_box">
+                                        <p>{ this.state.errorVoucherText }</p>
                                     </div>
-                                    <div className="order_summary">
+
+                                    <div className="order_summary" id="order_summary">
                                         <h4>Order Summary</h4>
                                         <div className="total_row">
                                             <p>Sub total</p>
@@ -335,25 +424,29 @@ class Cart extends Component {
                                             <span></span>
                                             }
                                             <p>Coupon/gift</p>
-                                            <span></span>
+                                            {
+                                                (applyVoucher)
+                                                ? <span>USD {reducedPrice} (-{percent}%)</span>
+                                                : <span></span> 
+                                            }
                                         </div>
 
                                         
                                     </div>
                                     <div className="total_bill">
                                         <h2>TOTAL</h2>
-                                        <span id="checkOutTotal">{num_price+shippingFee}</span>
+                                        <span id="checkOutTotal">{num_price - reducedPrice + shippingFee}</span>
                                         <span>USD &nbsp;</span>
                                         
                                     </div>
                                 </div>
                             </div>
-                            <a  onClick = {this.checkOut}>
-                                <div className="checkout_box">
-                                    <p class="checkout_left">USD {num_price+shippingFee}</p>
+                            {/* <a > */}
+                                <div className="checkout_box" onClick = {this.checkOut}>
+                                    <p class="checkout_left">USD {num_price - reducedPrice + shippingFee}</p>
                                     <p class="checkout_right">checkout now</p>
                                 </div>  
-                            </a>
+                            {/* </a> */}
                         </div>
                     </div>
                 </div>

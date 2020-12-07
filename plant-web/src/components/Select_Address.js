@@ -137,7 +137,7 @@ export default function MultipleSelect() {
       window.location.href = '/user/manage=address  ';
     })
   }
-
+  console.log(data);
   return (
     <div className="select-component">
         <div className="city-selector">

@@ -26,5 +26,10 @@ product.get('/type=:type/sort=decrease/page=:page', controller.typeDecreaseOfPag
 
 product.post('/similarproducts', controller.similarProducts)
 
+product.post('/addproduct', controller.addProduct);
+
+product.post('/updateproduct', controller.updateProduct);
+
+product.post('/updateimages', controller.updateImages);
 
 module.exports = product;

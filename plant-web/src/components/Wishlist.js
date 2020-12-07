@@ -66,31 +66,47 @@ class Wishlist extends Component {
 
     addToCart = (productId, name, image, price, size) => {
         if(Cookies.get('id')) {
-            const userId = Cookies.get('id');
-            const inforProduct = {
-                userId: userId,
-                productId: productId,
-                nameProduct: name,
-                image: image,
-                price: price,
-                size: size,
-                number: 1
-            }
-            Axios.post('/cart/addCart', inforProduct)
-            .then(res=> {
-                Swal.fire({
-                position: 'top-mid',
-                icon: 'success',
-                title: "Product added successfully",
-                showConfirmButton: false,
-                timer: 1500
-                })
-                this.getCart();
+            Axios.get(LOCALHOST+'/product/id='+productId)
+            .then(res => {
+                const quantum = res.data[0].number;
+                if(quantum > 0) {   // con so luong
+                    const userId = Cookies.get('id');
+                    const inforProduct = {
+                        userId: userId,
+                        productId: productId,
+                        nameProduct: name,
+                        image: image,
+                        price: price,
+                        size: size,
+                        number: 1
+                    }
+                    Axios.post( LOCALHOST+'/cart/addCart', inforProduct)
+                    .then(res=> {
+                        Swal.fire({
+                        position: 'top-mid',
+                        icon: 'success',
+                        title: "Product added successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                        this.getCart();
+                    })
+                } else {    // het so luong
+                    Swal.fire({
+                        title: 'Your selected product is out of stock',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
+                }
             })
-        }
-        else {
+        } else {
             this.props.history.push('/user/login');
         }
+       
     }
 
     getCart() {

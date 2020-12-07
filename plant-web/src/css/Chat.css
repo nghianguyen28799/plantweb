@@ -1,0 +1,118 @@
+.outerContainer {
+    clear: both;
+    height: 380px;
+    width: 350px;
+    position: fixed;
+    z-index: 9999999999999;
+    margin-left: 1125px;
+    margin-top: 415px;
+    display: none;
+  }
+  
+  .container-char {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border-radius: 8px;
+    height: 60%;
+    width: 35%;
+  }
+  
+  .div-messages {
+    width: 100%;
+    height: 287px;
+    overflow: auto;
+    border-left: 1px solid #9e9e9e;
+    background: #fff;
+  }
+
+  .input-text {
+    width: 76%;
+    height: 40px;
+  }
+
+  .sendButton {
+    height: 40px;
+    background: #2979ff;
+    width: 24%;
+    border: none;
+    text-transform: uppercase;
+  }
+
+  .message-client {
+    float: right;
+    clear: both;
+    padding: 3px 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: #3F51B5;
+    color: #fff;
+  }
+
+  .message-admin {
+    float: left;
+    clear: both;
+    padding: 3px 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: #595654;
+    margin-left: 5px;
+    color: #fff;
+  }
+
+  .button-message-view {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    background: #95d601;
+    z-index: 9999999;
+    margin-left: 1500px;
+    margin-top: 720px;
+    padding-top: 17px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px 3px rgb(0 0 0 / 22%)
+  }
+
+  .input-text:focus {
+    outline: none;
+  }
+  
+  .button-message-view:hover {
+    cursor: pointer;
+  }
+
+  .close-message:hover {
+    cursor: pointer;
+  }
+
+
+  #message {
+    display: none;
+  }
+
+  #message:checked ~ .outerContainer {
+    display: block;
+  }
+
+  #message:checked ~ .button-message-view {
+    background: red;
+  }
+
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .outerContainer {
+      height: 100%;
+    }
+  
+    .container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  @media (min-width: 480px) and (max-width: 1200px) {
+    .container {
+      width: 60%;
+    }
+  }

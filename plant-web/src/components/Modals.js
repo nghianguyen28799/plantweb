@@ -38,13 +38,16 @@ class ModalExample extends Component {
         productImage: infoCart.image,
         productSize: infoCart.size,
         numberOfEachProduct: infoCart.numberOfEachProduct,
-        shippingFee: infoCart.shippingFee,
+        shippingFee: infoCart.shippingFee, 
         productPriceTotal: infoCart.total,
         shippingTime: infoCart.shippingTime,
       }
       if(this.state.validAddress) {
         axios.post(LOCALHOST+'/order/createOrder', data)
         .then(() => {
+            if(this.props.Voucher) {
+                axios.post(LOCALHOST+'/voucher/updateUsedVoucher', { voucher: this.props.Voucher, userId: Cookies.get('id') })
+            }
           window.location.href = "/user/manage=orders";
         })
       }  

@@ -214,7 +214,7 @@ class Header extends Component {
                             </label>
                            
                         </div>
-                        <Link to="/"><img src={ Logo }></img></Link>
+                        <Link to="/" className="logo-myweb"><img src={ Logo }></img></Link>
 
                         {/* mobile */}
                         <div className="search-btn" onClick={ this.onChangeToSearch }>

@@ -13,7 +13,7 @@ const Footer = () => {
                     <Link to="/"><img src={ Logo }></img></Link>
                 </MDBCol>
                 <MDBCol md="6">
-                    <h5 className="title">Links</h5>
+                  
                     <ul>
                     <li className="list-unstyled">
                         <a href="#!">Link 1</a>
@@ -33,7 +33,7 @@ const Footer = () => {
             </MDBContainer>
             <div className="footer-copyright text-center py-3">
                 <MDBContainer fluid>
-                &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> Rapper Underground </a>
+                &copy; {new Date().getFullYear()} Copyright: <a href="#"> Plant Shop </a>
                 </MDBContainer>
             </div>
         </MDBFooter>

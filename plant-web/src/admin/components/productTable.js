@@ -121,17 +121,12 @@ function Editable() {
                 resolve();
               }, 1000)
             }),
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataUpdate = [...data];
-                const index = oldData.tableData.id;
-                dataUpdate[index] = newData;
-                setData([...dataUpdate]);
-                  console.log(newData);
-                resolve();
-              }, 1000)
-            }),
+          onRowUpdate: (newData, oldData) =>{
+            console.log(oldData);
+            window.location.href = "/updateproduct/"+oldData.id 
+          },
+            
+            
           onRowDelete: oldData =>
             new Promise((resolve, reject) => {
               setTimeout(() => {

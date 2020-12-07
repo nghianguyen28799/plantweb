@@ -371,6 +371,9 @@
     display: none;
 }
 
+div.sc-iCoHVE.kRlYRh.rec.rec-pagination {
+    display: none;
+}
 
 @media only screen and (max-width: 767px) {
     .img_wrap {

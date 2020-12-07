@@ -127,9 +127,10 @@ class Product extends Component {
         if(!page || page<1) {
             page = 1;
         }
-        const limit = 16;
+        const limit = 12;
         var pageTotal = Math.ceil(this.state.productTotal.length / limit);
         var numPage = [];
+        // console.log(this.state.productTotal);
         const n = Number(page) + 2
         for(var i=page-2 ; i<=Number(page)+2 && i<=pageTotal; i++) {
             if(i>0) {

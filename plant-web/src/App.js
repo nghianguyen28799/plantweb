@@ -66,7 +66,8 @@ class App extends Component {
               <Route path="/updateproduct/:id" exact component={ updateProduct } />
               <Route path="/contact" exact component component={Contact} />
               <Route path="/contact/userId=:id" exact component component={ChatAdmin} />
-            </div> :
+            </div> 
+            :
             <div>
               {/* {
                 (!Cookies.get('id')) &&

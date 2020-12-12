@@ -8,6 +8,7 @@ import InfoBar from '../test/InfoBar/InfoBar';
 // import Input from '../test/Input/Input';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 import '../css/Chat.css';
 
@@ -80,16 +81,18 @@ const Chat = (props) => {
         <div className="outerContainer">
             <div className="container-chat">
                 <InfoBar room={room} />
-                <div className="div-messages">
-                    {
-                        (messages) &&
-                        messages.map(message => (               
-                                message.name.toLowerCase() != 'admin'
-                                ? <p className="message-client">{message.text}</p>
-                                : <p className="message-admin">{message.text}</p>    
-                        ))
-                    }
-                </div>
+                {/* <div className="div-messages"> */}
+                    <ScrollToBottom className="div-messages">
+                        {
+                            (messages) &&
+                            messages.map(message => (               
+                                    message.name.toLowerCase() != 'admin'
+                                    ? <p className="message-client">{message.text}</p>
+                                    : <p className="message-admin">{message.text}</p>    
+                            ))
+                        }
+                    </ScrollToBottom>
+                {/* </div> */}
                 {/* <form className="form"> */}
                     <input
                     className="input-text"

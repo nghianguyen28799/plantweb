@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
+import ScrollToBottom from 'react-scroll-to-bottom';
 import '../css/chatAdmin.css';
 
 let socket;
@@ -112,16 +112,18 @@ const Chat = (props) => {
                     <div className="title-admin-chat">
                         <h5>{user.firstName}</h5>
                     </div>
-                    <div className="chat-admin-content">
-                    {
-                        (messages) &&
-                        messages.map(message => (               
-                                message.name.toLowerCase() == 'admin'
-                                ? <p className="admin-message-admin">{message.text}</p>
-                                : <p className="admin-message-client">{message.text}</p>    
-                        ))
-                    }
-                    </div>
+                    {/* <div className="chat-admin-content"> */}
+                    <ScrollToBottom className="chat-admin-content">
+                        {
+                            (messages) &&
+                            messages.map(message => (               
+                                    message.name.toLowerCase() == 'admin'
+                                    ? <p className="admin-message-admin">{message.text}</p>
+                                    : <p className="admin-message-client">{message.text}</p>    
+                            ))
+                        }
+                    </ScrollToBottom>
+                    {/* </div> */}
                     <div className="button-chat-admin">
                        <input
                             className="input-text-admin"

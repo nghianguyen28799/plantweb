@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Logo from '../images/logo.svg'
+import Logo from '../images/logo-plantshop.png'
 import '../css/Footer.css'
 const Footer = () => {
   return (
@@ -16,16 +16,16 @@ const Footer = () => {
                   
                     <ul>
                     <li className="list-unstyled">
-                        <a href="#!">Link 1</a>
+                        <a href="/user/signup">Sign Up</a>
                     </li>
                     <li className="list-unstyled">
-                        <a href="#!">Link 2</a>
+                        <a href="/product/type=indoor">Products</a>
                     </li>
                     <li className="list-unstyled">
-                        <a href="#!">Link 3</a>
+                        <a href="/user/manage=profile">My Profile</a>
                     </li>
                     <li className="list-unstyled">
-                        <a href="#!">Link 4</a>
+                        <a href="/user/manage=orders">Orders</a>
                     </li>
                     </ul>
                 </MDBCol>

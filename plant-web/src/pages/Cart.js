@@ -25,7 +25,7 @@ class Cart extends Component {
             getQty: [],
             applyVoucher: false,
             errorVoucherText: '',
-            num_price: 0,
+            total_order: 0,
         }
         this.getUpdate = this.getUpdate.bind(this);
         this.delete = this.delete.bind(this);
@@ -60,12 +60,12 @@ class Cart extends Component {
             this.setState({
                 products: res.data,
             })
-            var num_price = 0;
+            var total_order = 0;
             res.data.map(product => (
-                num_price += (product.price * product.number)
+                total_order += (product.price * product.number)
             ))
             this.setState({
-                num_price: num_price
+                total_order: total_order
             })
 
 
@@ -169,39 +169,16 @@ class Cart extends Component {
         })
         
         let shipping_Fee = this.state.shippingFee;
-        const productArr = this.state.products;
-        let productId = [];
-        let number = [];
-        let name = [];
-        let price = [];
-        let image = [];
-        let size = [];
-        for(var i in productArr) {
-            productId.push(productArr[i].productId);
-            number.push(productArr[i].number);
-            name.push(productArr[i].nameProduct);
-            price.push(productArr[i].price);
-            image.push(productArr[i].image);
-            size.push(productArr[i].size);  
-        }
+
         if(shipping_Fee === 'Free') {
             shipping_Fee = 0;
         }
-        let num_price = 0;
-        this.state.products.map(product => (
-            num_price += (product.price * product.number)
-        ))
+
         const orderInformation = {
-            userId: Cookies.get('id'),
-            productId: productId,
-            total: num_price,
-            numberOfEachProduct: number,
-            shippingFee: Number(shipping_Fee),
-            image: image,
-            name: name,
-            price: price,
-            shippingTime: this.state.shippingTime,
-            size: size,
+            productInfo: this.state.products,
+            shipping_Fee: shipping_Fee,
+            total: this.state.total_order,
+            shippingTime: this.state.shippingTime
         }
         this.setState({
             infoCart: orderInformation
@@ -233,7 +210,7 @@ class Cart extends Component {
                 }
                 else if(res.data[0]) {
                     // 
-                    if(this.state.num_price < res.data[0].minOrder) {
+                    if(this.state.total_order < res.data[0].minOrder) {
                         this.setState({ errorVoucherText: 'Minimun Order from ' + res.data[0].minOrder })
                         const orderSummary = document.getElementById('order_summary');
                         orderSummary.style.marginTop = "0";
@@ -269,19 +246,19 @@ class Cart extends Component {
     }
     
     render() {
-        const { num_price, products, Voucher, applyVoucher } = this.state;
+        const { total_order, products, Voucher, applyVoucher } = this.state;
 
-        var totalToFree = num_price; 
+        var totalToFree = total_order; 
         var text = "";
         var shippingFee = this.state.shippingFee;
         var text_ship = shippingFee;
-        if(num_price>=100) {
+        if(total_order>=100) {
             totalToFree=100;
             text = "Congrats! You've earned FREE shipping"
             shippingFee = 0;
             text_ship = "Free"
         } else {    
-            text = "You are USD " +(100-num_price)+" away from free shipping"
+            text = "You are USD " +(100-total_order)+" away from free shipping"
         }
 
         var percent = 0;
@@ -289,10 +266,10 @@ class Cart extends Component {
         if(applyVoucher) {
             percent = Voucher.percent;
             
-            if((num_price * percent / 100) > Voucher.maximum) {
+            if((total_order * percent / 100) > Voucher.maximum) {
                 reducedPrice = Voucher.maximum;
             } else {
-                reducedPrice = num_price * percent / 100;
+                reducedPrice = total_order * percent / 100;
             }
         }
 
@@ -320,7 +297,7 @@ class Cart extends Component {
                             <div className="cart_left_header">
                                 <h1>My Cart</h1>
                             </div>
-                            <Modals changeToggle={this.toggle} toggle={this.state.modals} user={this.state.user} infoCart={ this.state.infoCart } Voucher={ Voucher } />
+                            <Modals changeToggle={this.toggle} toggle={this.state.modals} user={this.state.user} infoCart={ this.state.infoCart } Voucher={ Voucher }  reducedPrice= { reducedPrice } />
                             <div className="cart_table">
                                 {
                                     products.map((product, index) => (
@@ -358,7 +335,7 @@ class Cart extends Component {
                             <div className="cart_box">
                                 <h5>{text}</h5>
                                 <div className="free_shipping_cart"> 
-                                    <p className="start_freeship">USD {num_price}</p>
+                                    <p className="start_freeship">USD {total_order}</p>
                                     <p className="end_freeship">USD 100</p>
                                     <div className="freeship_bar">
                                         <div className="bar" style={{width: totalToFree+'%'}}></div>
@@ -415,11 +392,11 @@ class Cart extends Component {
                                         <h4>Order Summary</h4>
                                         <div className="total_row">
                                             <p>Sub total</p>
-                                            <span>USD {num_price}</span>
+                                            <span>USD {total_order}</span>
                                             <p>Shipping</p>
                                             <span id="shippingFee">{text_ship}</span>
                                             {
-                                            (num_price < 100)?
+                                            (total_order < 100)?
                                             <span>USD&nbsp;</span> : 
                                             <span></span>
                                             }
@@ -435,7 +412,7 @@ class Cart extends Component {
                                     </div>
                                     <div className="total_bill">
                                         <h2>TOTAL</h2>
-                                        <span id="checkOutTotal">{num_price - reducedPrice + shippingFee}</span>
+                                        <span id="checkOutTotal">{total_order - reducedPrice + shippingFee}</span>
                                         <span>USD &nbsp;</span>
                                         
                                     </div>
@@ -443,7 +420,7 @@ class Cart extends Component {
                             </div>
                             {/* <a > */}
                                 <div className="checkout_box" onClick = {this.checkOut}>
-                                    <p class="checkout_left">USD {num_price - reducedPrice + shippingFee}</p>
+                                    <p class="checkout_left">USD {total_order - reducedPrice + shippingFee}</p>
                                     <p class="checkout_right">checkout now</p>
                                 </div>  
                             {/* </a> */}

@@ -25,24 +25,27 @@ class ModalExample extends Component {
     }
 
     checkOut() {
-      
-      const { user, infoCart } = this.props
+        const { user, infoCart, reducedPrice } = this.props
+        // console.log(infoCart);
+        // console.log(user);
+        let lastName= "";
+        (user.lastName) && (lastName = user.lastName);
+        const userInfo = { 
+            name: user.firstName + " " + lastName,
+            phone: user.phone,
+            address: this.state.address,
+        }
         const data = {
-        userId: Cookies.get('id'),
-        userName: user.firstName + user.lastName,
-        userPhone: user.phone,
-        userAddress: this.state.address,
-        productId:  infoCart.productId,
-        productName: infoCart.name,
-        productPrice: infoCart.price,
-        productImage: infoCart.image,
-        productSize: infoCart.size,
-        numberOfEachProduct: infoCart.numberOfEachProduct,
-        shippingFee: infoCart.shippingFee, 
-        productPriceTotal: infoCart.total,
-        shippingTime: infoCart.shippingTime,
-      }
-      if(this.state.validAddress) {
+            userId: user._id,
+            userInfo: userInfo,
+            productInfo: infoCart.productInfo,
+            shippingFee: infoCart.shipping_Fee,
+            voucher: reducedPrice,
+            total: infoCart.total,
+            shippingTime: infoCart.shippingTime
+        }
+        // console.log(data);
+      if(this.state.validAddress && user.phone) {
         axios.post(LOCALHOST+'/order/createOrder', data)
         .then(() => {
             if(this.props.Voucher) {
@@ -53,6 +56,7 @@ class ModalExample extends Component {
       }  
     }
 
+    
     render() {
         var firstSelect = '';
         var currencies = [];

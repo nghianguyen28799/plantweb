@@ -27,6 +27,7 @@ import Contact from './admin/components/contact.js';
 import Join from './components/Join.js';
 import Chat from './components/Chat.js';
 import ChatAdmin from './admin/components/chatAdmin.js';
+import Statistic from './admin/components/statistic.js'
 
 import Message_icon from './images/message.svg';
 import { LOCALHOST } from './host.js'
@@ -62,10 +63,11 @@ class App extends Component {
               <Route path="/product" exact component={ productTable } />
               <Route path="/user" exact component={ userTable } />
               <Route path="/order" exact component={ orderTable } />
-              <Route path="/addproduct" exact component={ addProduct } />
-              <Route path="/updateproduct/:id" exact component={ updateProduct } />
+              {/* <Route path="/addproduct" exact component={ addProduct } />
+              <Route path="/updateproduct/:id" exact component={ updateProduct } /> */}
               <Route path="/contact" exact component component={Contact} />
               <Route path="/contact/userId=:id" exact component component={ChatAdmin} />
+              <Route path="/statistic/page=:page" exact component component={Statistic} />
             </div> 
             :
             <div>

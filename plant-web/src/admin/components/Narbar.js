@@ -44,25 +44,48 @@ const Example = (props) => {
               <Link to="/order"><NavLink>Orders</NavLink></Link>
             </NavItem>
             <NavItem>
-              <Link to="/addproduct"><NavLink>Add Product</NavLink></Link>
-            </NavItem>
-            <NavItem>
               <Link to="/contact"><NavLink>Contact</NavLink></Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Statistic
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Option 1
+                  <Link to="/statistic/page=1"><NavLink>Month 1</NavLink></Link>
                 </DropdownItem>
                 <DropdownItem>
-                  Option 2
+                  <Link to="/statistic/page=2"><NavLink>Month 2</NavLink></Link>
                 </DropdownItem>
-                <DropdownItem divider />
                 <DropdownItem>
-                  Reset
+                  <Link to="/statistic/page=3"><NavLink>Month 3</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=4"><NavLink>Month 4</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=5"><NavLink>Month 5</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=6"><NavLink>Month 6</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=7"><NavLink>Month 7</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=8"><NavLink>Month 8</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=9"><NavLink>Month 9</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=10"><NavLink>Month 10</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=11"><NavLink>Month 11</NavLink></Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/statistic/page=12"><NavLink>Month 12</NavLink></Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

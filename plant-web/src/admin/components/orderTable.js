@@ -54,33 +54,33 @@ function Editable() {
       { title: 'Address', field: 'address'},
       { title: 'Product', field: 'product',
         render: rowData => {
-        return  rowData.productImage.map((value, index) => 
+        return  rowData.productInfo.map((product, index) => 
             <div style={{ width: 300, float: "left"}}>
                 <div style={{ width: 80, float: "left" }}>
-                  <img src={ require('../../images/products/'+value) } style={{ width: '100%' }} />
+                  <img src={ require('../../images/products/'+ product.image) } style={{ width: '100%' }} />
                 </div>
                 <div style={{ width: 210 , float: "left", "padding-left": "5px" }}>                 
-                  <h5> {rowData.productName[index] } </h5>
-                  <p>{ rowData.productSize[index] }</p>
-                  <p>x { rowData.productPrice[index] }</p>
+                  <p style={{ "line-height": 20 }}> { product.nameProduct } </p>
+                  <p style={{ "line-height": 5, 'font-size': '14px' }}>{ product.size }</p>
+                  <p style={{ "line-height": 5, 'font-size': '14px' }}>{ product.price } USD</p>
+                  <p style={{ "line-height": 5, 'font-size': '14px' }}>x { product.number }</p>
                 </div>
             </div>
           )
         }
       },
       { title: 'Shipping Fee', field: 'shippingfee'},
+      { title: 'Voucher', field: 'voucher'},
       { title: 'Payment', field: 'payment' },
       { title: 'Time Order', field: 'timeorder' },
       {
         title: 'Order Status',
         field: 'orderstatus',
-        lookup: { 0: 'Waiting', 1: 'Đã xác nhận', 2: 'Đang vận chuyển', 3: 'Đã giao' },
+        lookup: { 0: 'To Pay', 1: 'To Ship', 2: 'To Receive', 3: 'Completed', 4: 'Cancelled' },
       },
     ]);
   
-    const [data, setData] = useState([
-    
-    ]);
+    const [data, setData] = useState([]);
 
     const getData = () => {
       Axios.get('http://localhost:9000/order')
@@ -90,21 +90,20 @@ function Editable() {
         for(let i in res.data) {  
           const dt = {
             id: res.data[i]._id, 
-            name: res.data[i].userName, 
-            phone: res.data[i].userPhone,
-            address: res.data[i].userAddress, 
-            productName: res.data[i].productName,
-            productPrice: res.data[i].productPrice,
-            productImage: res.data[i].productImage,
-            productSize: res.data[i].productSize,
+            name: res.data[i].userInfo[0].name, 
+            phone: res.data[i].userInfo[0].phone,
+            address: res.data[i].userInfo[0].address, 
+            productInfo: res.data[i].productInfo,
             shippingfee: res.data[i].shippingFee,
-            payment: res.data[i].productPriceTotal,
+            voucher: res.data[i].voucher,
+            payment: res.data[i].total + res.data[i].shippingFee + res.data[i].voucher,
             timeorder: res.data[i].currentTime,
             orderstatus: res.data[i].orderStatus
           }
-          array.push(dt);
+         array.push(dt);
         }
           setData(array);
+          console.log(res.data);
       })
     }
 

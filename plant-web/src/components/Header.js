@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Header.css';
 import '../css/Menu.css';
 import 'animate.css';
-import Logo from '../images/logo.svg'
+import Logo from '../images/logo-plantshop.png'
 import SearchLogo from '../images/search.svg';
 import SearchLogoMobile from '../images/search_mobile.svg';
 import Profile from '../images/profile.svg'

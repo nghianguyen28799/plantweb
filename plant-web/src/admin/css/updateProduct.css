@@ -1,0 +1,110 @@
+.div-add-product {
+    width: 50px;
+    position: absolute;
+    z-index: 999999;
+    margin-left: 135px;
+    margin-top: 14px;
+}
+
+.div-add-product img {
+    width: 30px;
+}
+
+.div-add-product img:hover {
+    cursor: pointer;
+}
+
+.container-product {
+    width: 100%;
+    height: 50px;
+}
+
+.container-left {
+    width: 40%;
+    float: left;
+    padding: 5px;
+}
+
+.container-left h5 {
+    float: left;
+}
+
+.container-left p {
+    float: left;
+    width: 28px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 5px;
+    color: #000;
+    background: #9e9e9e;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.container-left:hover {
+    cursor: pointer;    
+}
+
+.container-right {
+    width: 60%;
+    float: left;
+    border-left: 1px solid;
+    padding: 5px;
+}
+
+.container-right h5 {
+  float: left;
+}
+
+.container-right p {
+    float: left;
+    width: 28px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 5px;
+    color: #000;
+    background: #9e9e9e;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.container-right:hover {
+    cursor: pointer;    
+}
+
+.content-image {
+    width: 100%;
+    overflow: auto;
+}
+.file-image {
+    width: 100%;
+    padding: 5px 0;
+}
+
+.content-info {
+    width: 100%;
+}
+
+.info-name {
+    width: 100%;
+}
+
+.info-price {
+    width: 45%;
+    float: left;
+}
+
+.info-size {
+    width: 45%;
+    float: right;
+}
+
+.info-qty {
+    width: 30%;
+    float: left;
+}
+
+.info-type {
+    width: 65%;
+    float: right;
+}

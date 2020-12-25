@@ -36,7 +36,8 @@ class Login extends Component {
     }
 
     responseGoogle = (res) => {
-        console.log(res.data);
+        console.log(res.googleId);
+        console.log(res.wt.Ad);
         this.setState({
             auth: true
         })
@@ -45,7 +46,7 @@ class Login extends Component {
             .then(response => {
                 if(!response.data.exist) { 
                     const infor = {
-                        // firstName: res.profileObj.name,
+                        firstName: res.wt.Ad,
                         idGoogle: res.googleId,
                     }
                     console.log(infor)
@@ -80,8 +81,8 @@ class Login extends Component {
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
                                     const userId = resUser.data[0]._id;
-                                    // Cookies.set('id', userId, { expires: 1 });
-                                    // window.location.href = "/";
+                                    Cookies.set('id', userId, { expires: 1 });
+                                    window.location.href = "/";
                                 }
                                 })
                             })
@@ -119,8 +120,8 @@ class Login extends Component {
                         /* Read more about handling dismissals below */
                         if (result.dismiss === Swal.DismissReason.timer) {
                             const userId = resGG.data[0]._id;
-                            // Cookies.set('id', userId, { expires: 1 });
-                            // window.location.href = "/";
+                            Cookies.set('id', userId, { expires: 1 });
+                            window.location.href = "/";
                         }
                         })
                     })
@@ -272,7 +273,7 @@ class Login extends Component {
                 Swal.fire({
                 title: 'Logged in successfully!',
                 html: 'You will move to home page in <b></b> milliseconds.',
-                timer: 1500,
+                timer: 1000,
                 timerProgressBar: true,
                 willOpen: () => {
                     Swal.showLoading()

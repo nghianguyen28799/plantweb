@@ -25,6 +25,8 @@
     text-transform: uppercase;
     border-bottom: 2px solid #95d600;
     width: auto;
+    float: left;
+    margin: 5px 0;
 }
 
 .featured-image1 {

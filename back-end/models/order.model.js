@@ -3,19 +3,13 @@ var Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
     userId: String,
-    userName: String,
-    userPhone: String,
-    userAddress: String,
-    productId: Array,
-    productName: Array,
-    productPrice: Array,
-    productImage: Array,
-    productSize: Array,
-    numberOfEachProduct: Array,
+    userInfo: Array,
+    productInfo: Array,
     shippingFee: Number,
-    productPriceTotal: Number,
+    voucher: Number,
+    total: Number,
     shippingTime: String,
-    currentTime: Date,
+    currentTime: String,
     orderStatus: Number
 });
 

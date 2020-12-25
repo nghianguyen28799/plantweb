@@ -42,6 +42,9 @@ class Product extends Component {
             this.setState({ 
                 products: res.data
             })
+            let dt = res.data;
+           
+            console.log(dt);
         });
         axios.get(apiProducts).then(res => [
             this.setState({

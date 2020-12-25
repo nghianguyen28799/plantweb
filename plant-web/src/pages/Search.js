@@ -115,7 +115,7 @@ class Search extends Component {
         if(!page || page<1) {
             page = 1;
         }
-        const limit = 6;
+        const limit = 12;
         var pageTotal = Math.ceil(this.state.productTotal.length / limit);
         var numPage = [];
         for(var i=page-2 ; i<=page+2 && i<=pageTotal ; i++) {
@@ -181,14 +181,23 @@ class Search extends Component {
                                         </div>
                                     </Link>                    
                                 ))
-                            }
+                            }     
+
                             <div className="pagination_wrap">
                                 {
+                                    (keyword) ?
                                     numPage.map(num => (
-                                        <Link to={"/product/search="+keyword+"/page="+num} onClick={window.scrollTo(0, 0)}>{num}</Link>
+                                        (num != page) ?
+                                        <Link to={"/product/search="+keyword+"/page="+num} onClick={window.scrollTo(0, 0)}>{num}</Link> :
+                                        <Link to={"/product/search="+keyword+"/page="+num} style={{color: "#fff", background: "#000"}} onClick={window.scrollTo(0, 0)}>{num}</Link> 
+                                    )) :
+                                    numPage.map(num => (
+                                        (num != page) ?
+                                        <Link to={"/product/search="+keyword+"/page="+num} onClick={window.scrollTo(0, 0)}>{num}</Link> :
+                                        <Link to={"/product/search="+keyword+"/page="+num} style={{color: "#fff", background: "#000"}} onClick={window.scrollTo(0, 0)}>{num}</Link> 
                                     ))
                                 }
-                            </div>      
+                            </div>       
                         </div>  
                     </div>
                 </div>

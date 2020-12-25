@@ -14,17 +14,11 @@ module.exports = {
         const currentTime = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
         Order.create({
             userId: req.body.userId,
-            userName: req.body.userName,
-            userPhone: req.body.userPhone,
-            userAddress: req.body.userAddress,
-            productId: req.body.productId,
-            productName: req.body.productName,
-            productPrice: req.body.productPrice,
-            productImage: req.body.productImage,
-            productSize: req.body.productSize,
-            numberOfEachProduct: req.body.numberOfEachProduct,
+            userInfo: req.body.userInfo,
+            productInfo: req.body.productInfo,
             shippingFee: req.body.shippingFee,
-            productPriceTotal: req.body.productPriceTotal,
+            voucher: req.body.voucher,
+            total: req.body.total,
             shippingTime: req.body.shippingTime,
             currentTime: currentTime,
             orderStatus: 0
@@ -91,7 +85,9 @@ module.exports = {
                 const condition = {_id: id}
                 const update = { orderStatus: newStatus }
 
-                Order.updateOne(condition, update).then(() => {})
+                Order.updateOne(condition, update).then(() => {
+                    res.send(200);
+                })
             }
         })    
     }

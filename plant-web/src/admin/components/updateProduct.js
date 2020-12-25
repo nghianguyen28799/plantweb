@@ -85,6 +85,8 @@ class updateProduct extends Component {
         })
     }
 
+    
+
     render(){
         const { quantum_type, quantum_image, name, prices, sizes, images, description, type, quantum } = this.state
         let loop_type = [];

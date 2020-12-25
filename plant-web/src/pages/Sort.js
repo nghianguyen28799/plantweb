@@ -216,7 +216,7 @@ class Sort extends Component {
                                                 <p>{ product.name }</p>
                                             </div>
                                             <div className="price_product">
-                                                <p>USD { product.prices[0] }</p>
+                                                <p>USD { product.prices }</p>
                                             </div>
                                         </div>
                                     </Link>                    

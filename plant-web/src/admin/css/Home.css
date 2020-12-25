@@ -12,3 +12,11 @@
 .body {
     width: 100%;
 }
+
+.editProduct {
+    width: 20px;
+}
+
+.editProduct:hover {
+    cursor: pointer;
+}

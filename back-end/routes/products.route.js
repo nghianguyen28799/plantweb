@@ -32,4 +32,6 @@ product.post('/updateproduct', controller.updateProduct);
 
 product.post('/updateimages', controller.updateImages);
 
+product.post('/deleteProduct', controller.deleteProduct);
+
 module.exports = product;

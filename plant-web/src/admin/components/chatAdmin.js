@@ -29,7 +29,6 @@ const Chat = (props) => {
             })
         })
 
-        const room = props.match.params.id;
         const name = "Admin";
         setName(name)
         setRoom(room);
@@ -39,6 +38,7 @@ const Chat = (props) => {
                 alert(error);
             }
         })    
+        console.log(room);
     }, [ENDPOINT])
 
 
@@ -68,6 +68,7 @@ const Chat = (props) => {
                 }
             }) 
         })
+
     },[messages]);
 
 
@@ -98,7 +99,7 @@ const Chat = (props) => {
                         data.map(dt => (
                             (dt.userId !== props.match.params.id)
                             ?
-                            <div className="id-contact-chat"  onClick={() => props.history.push('/contact/userid='+dt.userId)}>
+                            <div className="id-contact-chat"  onClick={() => window.location.href = '/contact/userid='+dt.userId}>
                                 <h5># {dt.userId}</h5>
                             </div>
                             :

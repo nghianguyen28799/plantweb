@@ -31,6 +31,9 @@
     margin-top: 15px;
 }
 
+.logo-myweb img {
+    width: 160px;
+}
 .menu-btn {
     display: none;
 }
@@ -111,6 +114,16 @@
 
 .back-to-menu {
     display: none;
+}
+
+/* footer */
+
+.list-unstyled {
+    margin: 5px 0;
+}
+
+.list-unstyled a {
+    color: #000;
 }
 
 @media only screen and (max-width: 767px) {
@@ -276,8 +289,7 @@
         float: left;
         padding: 14px;
     }
-
-
+    
 }
 
 

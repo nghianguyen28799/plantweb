@@ -44,6 +44,7 @@
     font-weight: bold;
     font-family: sans-serif;
     margin: 0;
+    float: left;
 }
 
 .form_container a:hover {

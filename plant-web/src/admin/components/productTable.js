@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import MaterialTable from "material-table";
 import { forwardRef } from 'react';
 
+import ModalEdit from './modalEditProduct';
+import ModalAdd from './modalAddProduct';
+
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import Check from '@material-ui/icons/Check';
@@ -18,7 +21,10 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import '../css/Home.css';
+import editIcon from '../../images/pencil.png';
 import Axios from 'axios';
+
+import plusIcon from '../../images/plus.svg';
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -42,12 +48,26 @@ const tableIcons = {
 
 function Editable() {
     const { useState } = React;
+    const [modalEdit, setModalEdit] = useState(false);
+    const [modalAdd, setModalAdd] = useState(false);
+
+    const [productId, setProductId] = useState('');
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
       getData();
     },[])
  
     const [columns, setColumns] = useState([
+      { title: '', field: 'edit',
+        render: rowData =>  
+        <img src={editIcon} className="editProduct" onClick={()=> {toggleEdit(); setProductId(rowData.id) ;
+          Axios.get('http://localhost:9000/product/id='+ rowData.id)
+          .then(res => {
+            setProduct(res.data[0]);
+          })
+        }} />
+      },
       { title: 'Id', field: 'id', editable: 'never' },
       { title: 'Images', field: 'image', 
         render: rowData => 
@@ -105,41 +125,42 @@ function Editable() {
       })
     }
 
+    const toggleEdit = () => {
+      setModalEdit(!modalEdit);
+    }
+
+    const toggleAdd = () => {
+      setModalAdd(!modalAdd);
+    }
+
     return (
-      <MaterialTable
-      icons={tableIcons}
-      
-        title="Product Page"
-        columns={columns}
-        data={data}
-        editable={{
-          onRowAdd: newData =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                setData([...data, newData]);
-                
-                resolve();
-              }, 1000)
-            }),
-          onRowUpdate: (newData, oldData) =>{
-            console.log(oldData);
-            window.location.href = "/updateproduct/"+oldData.id 
-          },
-            
-            
-          onRowDelete: oldData =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataDelete = [...data];
-                const index = oldData.tableData.id;
-                dataDelete.splice(index, 1);
-                setData([...dataDelete]);
-                
-                resolve()
-              }, 1000)
-            }),
-        }}
-      />
+      <div>
+        <ModalEdit modalProps={modalEdit} toggle={toggleEdit} id={productId} product={product} images={product.images} sizes={product.sizes}/>
+        <ModalAdd modalProps={modalAdd} toggle={toggleAdd} id={productId} product={product} images={product.images} sizes={product.sizes}/>
+        <div class="div-add-product" onClick={toggleAdd}><img src={plusIcon}/></div>
+        <MaterialTable
+          icons={tableIcons}
+          title="Product Page"
+          columns={columns}
+          data={data}
+          editable={{
+            onRowDelete: oldData =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataDelete = [...data];
+                  const index = oldData.tableData.id;
+                  dataDelete.splice(index, 1);
+                  setData([...dataDelete]);
+                    Axios.post("http://localhost:9000/product/deleteProduct", {productId: oldData.id})
+                    .then(res => {
+                      console.log('deleted');
+                    }) 
+                  resolve()
+                }, 1000)
+              }),
+          }}
+        />
+      </div>
     )
   }
   

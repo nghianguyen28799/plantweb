@@ -77,14 +77,38 @@ module.exports = {
         const keyword = req.params.keyword.toLowerCase();
         const page = req.params.page;
         var start = limit * (page-1);
-        Product.find({name:{'$regex' : keyword, '$options' : 'i'}}).sort({prices: [1]}).skip(start).limit(limit)
-        .exec((err, data) => {
-            if(err) {
-                console.log('err: ', err);
-            } else {
-                res.json(data);
-            }
-        })  
+        Product.find({name:{'$regex' : keyword, '$options' : 'i'}}).skip(start).limit(limit)
+        .then(data => {
+            const dt = [];
+        
+                data.map(value => {
+                    const newDT = {
+                        _id: value._id,
+                        name: value.name,
+                        prices: value.prices[0],
+                        images: value.images,
+                        type: value.type,
+                    } 
+                    dt.push(newDT)
+                })
+                function compare(a, b) {
+                    var typeA = a.prices;
+                    var typeB = b.prices;
+                  
+                    let comparison = 0;
+                    if (typeA > typeB) {
+                      comparison = 1;
+                    } else if (typeA < typeB) {
+                      comparison = -1;
+                    }
+                    else {
+                        comparison = 0;
+                    }
+                    return comparison;
+                }
+        
+                res.json(dt.sort(compare));
+        })
     },
 
     sortDecreaseOfPaginationSearch: (req, res) => {
@@ -92,12 +116,36 @@ module.exports = {
         const page = req.params.page;
         var start = limit * (page-1);
         Product.find({name:{'$regex' : keyword, '$options' : 'i'}}).sort({prices: [-1]}).skip(start).limit(limit)
-        .exec((err, data) => {
-            if(err) {
-                console.log('err: ', err);
-            } else {
-                res.json(data);
-            }
+        .then(data => {
+            const dt = [];
+        
+                data.map(value => {
+                    const newDT = {
+                        _id: value._id,
+                        name: value.name,
+                        prices: value.prices[0],
+                        images: value.images,
+                        type: value.type,
+                    } 
+                    dt.push(newDT)
+                })
+                function compare(a, b) {
+                    var typeA = a.prices;
+                    var typeB = b.prices;
+                  
+                    let comparison = 0;
+                    if (typeA > typeB) {
+                      comparison = -1;
+                    } else if (typeA < typeB) {
+                      comparison = 1;
+                    }
+                    else {
+                        comparison = 0;
+                    }
+                    return comparison;
+                }
+        
+                res.json(dt.sort(compare));
         })
     },
 
@@ -105,13 +153,37 @@ module.exports = {
         const type = req.params.type;
         const page = req.params.page;
         var start = limit * (page-1);
-        Product.find({type: type}).sort({prices: [1]}).skip(start).limit(limit)
-        .exec((err, data) => {
-            if(err) {
-                console.log('err: ', err);
-            } else {
-                res.json(data);
-            }
+        Product.find({type: type}).skip(start).limit(limit)
+        .then(data => {
+            const dt = [];
+        
+                data.map(value => {
+                    const newDT = {
+                        _id: value._id,
+                        name: value.name,
+                        prices: value.prices[0],
+                        images: value.images,
+                        type: value.type,
+                    } 
+                    dt.push(newDT)
+                })
+                function compare(a, b) {
+                    var typeA = a.prices;
+                    var typeB = b.prices;
+                  
+                    let comparison = 0;
+                    if (typeA > typeB) {
+                      comparison = 1;
+                    } else if (typeA < typeB) {
+                      comparison = -1;
+                    }
+                    else {
+                        comparison = 0;
+                    }
+                    return comparison;
+                }
+        
+                res.json(dt.sort(compare));
         })
     },
 
@@ -119,13 +191,37 @@ module.exports = {
         const type = req.params.type;
         const page = req.params.page;
         var start = limit * (page-1);
-        Product.find({type: type}).sort({prices: [-1]}).skip(start).limit(limit)
-        .exec((err, data) => {
-            if(err) {
-                console.log('err: ', err);
-            } else {
-                res.json(data);
-            }
+        Product.find({type: type}).skip(start).limit(limit)
+        .then(data => {
+            const dt = [];
+        
+                data.map(value => {
+                    const newDT = {
+                        _id: value._id,
+                        name: value.name,
+                        prices: value.prices[0],
+                        images: value.images,
+                        type: value.type,
+                    } 
+                    dt.push(newDT)
+                })
+                function compare(a, b) {
+                    var typeA = a.prices;
+                    var typeB = b.prices;
+                  
+                    let comparison = 0;
+                    if (typeA > typeB) {
+                      comparison = -1;
+                    } else if (typeA < typeB) {
+                      comparison = 1;
+                    }
+                    else {
+                        comparison = 0;
+                    }
+                    return comparison;
+                }
+        
+                res.json(dt.sort(compare));
         })
     },
 
@@ -177,6 +273,14 @@ module.exports = {
             res.json({success: true});
         })
 
+    },
+
+    deleteProduct: (req, res) => {
+        const productId = req.body.productId;
+        Product.deleteOne({_id: productId})
+        .then(() => {
+            res.send(200);
+        })
     },
 
     updateImages: (req, res) => {
